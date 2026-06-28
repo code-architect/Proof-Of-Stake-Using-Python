@@ -11,3 +11,12 @@ for now we are only Concentrating on this basic transaction, Where we transfer s
 "self.type" - The type of transaction indicating the category or purpose (e.g., transfer, mint, burn).
 
 "Main.py" - Example usage of the Transaction class demonstrating how to create and initialize a transaction object with sample data.
+
+"toJson" - Method that returns the transaction object as a JSON-serializable dictionary containing all transaction attributes.
+
+# 2
+RSA.generate(2048) - Generates a new RSA key pair with a 2048-bit modulus, providing cryptographic security for the wallet's private and public keys.
+
+"D:\xampp\htdocs\sand_box\poc\proof_of_stake\BlockchainUtils.py" - def hash(data):
+This can be anything. The data can be anything. It can be a class or a string. That's the reason we need the JSON library, so we can use JSON dump to dump the data. It's kind of like a string representation of the data. 
+Then we encode this string to bytes using UTF-8 encoding and compute its SHA256 hash to get a fixed-size, unique identifier for the transaction data.

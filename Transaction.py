@@ -12,7 +12,11 @@ class Transaction:
         self.timestamp = time.time()
         self.signature = ''
         
-        
+    def toJson(self):
+        return self.__dict__
+
+
+
 
 
 
