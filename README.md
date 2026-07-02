@@ -20,3 +20,26 @@ RSA.generate(2048) - Generates a new RSA key pair with a 2048-bit modulus, provi
 "D:\xampp\htdocs\sand_box\poc\proof_of_stake\BlockchainUtils.py" - def hash(data):
 This can be anything. The data can be anything. It can be a class or a string. That's the reason we need the JSON library, so we can use JSON dump to dump the data. It's kind of like a string representation of the data. 
 Then we encode this string to bytes using UTF-8 encoding and compute its SHA256 hash to get a fixed-size, unique identifier for the transaction data.
+
+┌─────────────────────────────────────────────────────────────────┐
+│                    Main.py (Entry Point)                        │
+│  - Creates Transaction objects                                  │
+│  - Signs with Wallet                                            │
+│  - Displays JSON output                                         │
+└──────────────┬──────────────────────────────────┬───────────────┘
+               │ imports                          │ imports
+       ┌───────▼───────┐                  ┌──────▼──────────┐
+       │ Transaction.py│                  │    Wallet.py    │
+       │  - Data Model │                  │ - RSA Keypair   │
+       │  - toJson()   │                  │ - sign(data)    │
+       │  - sign()     │                  └──────┬──────────┘
+       └───────────────┘                         │ uses
+                                         ┌──────▼──────────┐
+                                         │ BlockchainUtils │
+                                         │  - hash(data)   │
+                                         │  - SHA256       │
+                                         └─────────────────┘
+
+# 3
+
+

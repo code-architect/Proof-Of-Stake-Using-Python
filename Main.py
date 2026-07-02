@@ -1,6 +1,7 @@
 from Transaction import Transaction
 from Wallet import Wallet
-from pprint import pprint
+from rich import print
+from devtools import debug
 
 if __name__ == "__main__":
     # Example usage of the Transaction class
@@ -9,28 +10,9 @@ if __name__ == "__main__":
     amount = 100
     transaction_type = "transfer"
 
-    transaction = Transaction(sender, recipient, amount, transaction_type)
-    # print(f"Transaction ID: {transaction.id}")
-    # print(f"Timestamp: {transaction.timestamp}")
-    # print(f"Signature: {transaction.signature}")
-    # print(f"Sender: {transaction.senderPublicKey}")
-    # print(f"Recipient: {transaction.recipientPublicKey}")
-    # print(f"Amount: {transaction.amount}")
-    # print(f"Type: {transaction.type}")
-    pprint(transaction.toJson())
-    
     wallet = Wallet()
-    wallet_signature = wallet.sign(transaction.toJson())
-    pprint(f"Wallet Signature: {wallet_signature}")
+    fraudWallet = Wallet()
+    transaction = wallet.createTransaction(recipient, amount, transaction_type)
+    signatureValid = wallet.signatureValidate(transaction.payload(), transaction.signature, fraudWallet.publicKeyString())
+    print(signatureValid)  # Should print True if the signature is valid    
     
-    
-
-
-
-
-
-
-
-
-
-
