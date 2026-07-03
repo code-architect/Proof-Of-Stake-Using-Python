@@ -2,6 +2,7 @@ from Transaction import Transaction
 from Wallet import Wallet
 from rich import print
 from devtools import debug
+from TransactionPool import TransactionPool
 
 if __name__ == "__main__":
     # Example usage of the Transaction class
@@ -11,8 +12,13 @@ if __name__ == "__main__":
     transaction_type = "transfer"
 
     wallet = Wallet()
-    fraudWallet = Wallet()
+    pool = TransactionPool()
     transaction = wallet.createTransaction(recipient, amount, transaction_type)
-    signatureValid = wallet.signatureValidate(transaction.payload(), transaction.signature, fraudWallet.publicKeyString())
-    print(signatureValid)  # Should print True if the signature is valid    
+   
+    if pool.transactionExists(transaction) == False:
+        pool.addTransaction(transaction)
+        
+    if pool.transactionExists(transaction) == False:
+        pool.addTransaction(transaction)
     
+    print(pool.transactions)
